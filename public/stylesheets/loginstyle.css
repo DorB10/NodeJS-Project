@@ -1,0 +1,599 @@
+/* Log In */
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: #f6f5f7;
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+span {
+    font-size: 12px;
+}
+
+a {
+    color: #333;
+    font-size: 14px;
+    text-decoration: none;
+    margin: 15px 0;
+}
+
+.hidden {
+    display: none;
+}
+
+
+/* Log In */
+
+.logincontainer {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    width: 600px;
+    max-width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    height: 600px;
+    margin: auto;
+}
+
+#ErrorLogin {
+    width: 80%;
+    text-align: center;
+    margin: 0;
+    padding: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #8a0000;
+    border: 1px solid #8a0000;
+    background-color: #e58f8f;
+    opacity: 0;
+}
+
+#ErrorLogin.show {
+    opacity: 1;
+}
+
+button {
+    border-radius: 20px;
+    border: 1px solid #FF4B2B;
+    background-color: #FF4B2B;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+button:focus {
+    outline: none;
+}
+
+button.ghost {
+    background-color: transparent;
+    border-color: #FFFFFF;
+}
+
+form {
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 50px;
+    height: 100%;
+    text-align: center;
+}
+
+input {
+    background-color: #eee;
+    border: none;
+    padding: 12px 15px;
+    margin: 8px 0;
+    width: 100%;
+}
+
+
+/* Log In */
+
+
+/* Chat */
+
+body,
+html {
+    background: #7F7FD5;
+    background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
+    background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
+}
+
+.chat {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.card {
+    height: 500px;
+    border-radius: 15px !important;
+    background-color: rgba(0, 0, 0, 0.4) !important;
+}
+
+.msg_card_body {
+    overflow-y: auto;
+}
+
+.card-header {
+    border-radius: 15px 15px 0 0 !important;
+    border-bottom: 0 !important;
+}
+
+.card-footer {
+    border-radius: 0 0 15px 15px !important;
+    border-top: 0 !important;
+}
+
+.container {
+    align-content: center;
+}
+
+.search {
+    border-radius: 15px 0 0 15px !important;
+    background-color: rgba(0, 0, 0, 0.3) !important;
+    border: 0 !important;
+    color: white !important;
+}
+
+.search:focus {
+    box-shadow: none !important;
+    outline: 0px !important;
+}
+
+.type_msg {
+    background-color: rgba(0, 0, 0, 0.3) !important;
+    border: 0 !important;
+    color: white !important;
+    height: 60px !important;
+    overflow-y: auto;
+}
+
+.type_msg:focus {
+    box-shadow: none !important;
+    outline: 0px !important;
+}
+
+.attach_btn {
+    border-radius: 15px 0 0 15px !important;
+    background-color: rgba(0, 0, 0, 0.3) !important;
+    border: 0 !important;
+    color: white !important;
+    cursor: pointer;
+}
+
+.send_btn {
+    border-radius: 0 15px 15px 0 !important;
+    background-color: rgba(0, 0, 0, 0.3) !important;
+    border: 0 !important;
+    color: white !important;
+    cursor: pointer;
+}
+
+.search_btn {
+    border-radius: 0 15px 15px 0 !important;
+    background-color: rgba(0, 0, 0, 0.3) !important;
+    border: 0 !important;
+    color: white !important;
+    cursor: pointer;
+}
+
+.contacts {
+    list-style: none;
+    padding: 0;
+}
+
+.contacts li {
+    width: 100% !important;
+    padding: 5px 10px;
+    margin-bottom: 15px !important;
+}
+
+.active {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.user_img {
+    height: 70px;
+    width: 70px;
+    border: 1.5px solid #f5f6fa;
+}
+
+.user_img_msg {
+    height: 40px;
+    width: 40px;
+    border: 1.5px solid #f5f6fa;
+}
+
+.img_cont {
+    position: relative;
+    height: 70px;
+    width: 70px;
+}
+
+.img_cont_msg {
+    height: 40px;
+    width: 40px;
+}
+
+.online_icon {
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    background-color: #4cd137;
+    border-radius: 50%;
+    bottom: 0.2em;
+    right: 0.4em;
+    border: 1.5px solid white;
+}
+
+.offline {
+    background-color: #c23616 !important;
+}
+
+.user_info {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 15px;
+}
+
+.user_info span {
+    font-size: 20px;
+    color: white;
+}
+
+.user_info p {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.video_cam {
+    margin-left: 50px;
+    margin-top: 5px;
+}
+
+.video_cam span {
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.msg_cotainer {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 10px;
+    border-radius: 25px;
+    background-color: #82ccdd;
+    padding: 10px;
+    position: relative;
+}
+
+.msg_cotainer_send {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 10px;
+    border-radius: 25px;
+    background-color: #78e08f;
+    padding: 10px;
+    position: relative;
+}
+
+.msg_time {
+    position: absolute;
+    left: 0;
+    bottom: -15px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 10px;
+}
+
+.msg_time_send {
+    position: absolute;
+    right: 0;
+    bottom: -15px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 10px;
+}
+
+.msg_head {
+    position: relative;
+}
+
+#action_menu_btn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.action_menu {
+    z-index: 1;
+    position: absolute;
+    padding: 15px 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border-radius: 15px;
+    top: 30px;
+    right: 15px;
+    display: none;
+}
+
+.action_menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.action_menu ul li {
+    width: 100%;
+    padding: 10px 15px;
+    margin-bottom: 5px;
+}
+
+.action_menu ul li i {
+    padding-right: 10px;
+}
+
+.action_menu ul li:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+@media(max-width: 576px) {
+    .contacts_card {
+        margin-bottom: 15px !important;
+    }
+}
+
+
+/* Chat */
+
+
+/* Administrator */
+
+.styleAD {
+    font-weight: bold;
+    color: blue;
+    margin: 0;
+    text-align: center;
+}
+
+.floatAD-container {
+    padding: 20px;
+}
+
+.box {
+    max-width: 800px;
+}
+
+
+/* Administrator */
+
+
+/* sidebar */
+
+.sidebar-container {
+    position: fixed;
+    z-index: 10;
+    width: 220px;
+    height: 100%;
+    left: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: #1a1a1a;
+    color: #fff;
+}
+
+.content-container {
+    padding-top: 20px;
+}
+
+.sidebar-logo {
+    padding: 10px 15px 10px 30px;
+    font-size: 20px;
+    background-color: #2574A9;
+}
+
+.sidebar-navigation {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    position: relative;
+}
+
+.sidebar-navigation li {
+    background-color: transparent;
+    position: relative;
+    width: 100%;
+    line-height: 20px;
+}
+
+.sidebar-navigation li a {
+    padding: 10px 15px 10px 30px;
+    display: block;
+    color: #fff;
+}
+
+.sidebar-navigation li .fa {
+    margin-right: 10px;
+}
+
+.sidebar-navigation li a:active,
+.sidebar-navigation li a:hover,
+.sidebar-navigation li a:focus {
+    text-decoration: none;
+    outline: none;
+}
+
+.sidebar-navigation li::before {
+    background-color: #2574A9;
+    position: absolute;
+    content: '';
+    height: 100%;
+    left: 0;
+    top: 0;
+    -webkit-transition: width 0.2s ease-in;
+    transition: width 0.2s ease-in;
+    width: 3px;
+    z-index: -1;
+}
+
+.sidebar-navigation li:hover::before {
+    width: 100%;
+}
+
+.sidebar-navigation .header {
+    font-size: 12px;
+    text-transform: uppercase;
+    background-color: #151515;
+    padding: 10px 15px 10px 30px;
+}
+
+.sidebar-navigation .header::before {
+    background-color: transparent;
+}
+
+.content-container {
+    padding-left: 220px;
+}
+
+#foot {
+    background-color: lightblue;
+    border-radius: 5px;
+}
+
+
+/*{footer*/
+
+.fa-facebook:hover {
+    color: rgb(1, 1, 168);
+    cursor: pointer;
+    text-shadow: rgb(0, 0, 0) 0 0 15px;
+}
+
+.fa-twitter:hover {
+    color: rgb(0, 174, 255);
+    cursor: pointer;
+    text-shadow: rgb(0, 0, 0) 0 0 15px;
+}
+
+.fa-google:hover {
+    color: rgb(0, 175, 29);
+    cursor: pointer;
+    text-shadow: rgb(0, 0, 0) 0 0 15px;
+}
+
+.fa-whatsapp:hover {
+    color: rgb(62, 255, 44);
+    cursor: pointer;
+    text-shadow: rgb(0, 0, 0) 0 0 15px;
+}
+
+.fa-instagram:hover {
+    color: yellow;
+    cursor: pointer;
+    text-shadow: rgb(0, 0, 0) 0 0 15px;
+}
+
+.fa-youtube:hover {
+    color: red;
+    cursor: pointer;
+    text-shadow: rgb(0, 0, 0) 0 0 15px;
+}
+
+.facebook {
+    border-radius: 0 7px 0 0;
+}
+
+.youtube {
+    border-radius: 0 0 7px 0;
+}
+
+
+/* sidebar */
+
+@media screen and (max-width:1500px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        margin-bottom: 10px;
+    }
+    .sidebar a {
+        float: left;
+    }
+    div.content {
+        margin-left: 0;
+        margin-top: 80px;
+    }
+    .divPro {
+        width: 90%;
+        margin-left: 5px;
+        margin-right: 5px;
+        margin-top: 10px;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 991.98px) {
+    .sidebar {
+        text-align: center;
+        float: none;
+    }
+    .divPro {
+        height: 90%;
+        width: 100%;
+        flex-direction: unset;
+        overflow: scroll;
+        margin: 10px;
+    }
+    #coursesTable {
+        width: 100%;
+        margin: 0px;
+    }
+}
+
+@media screen and (max-width: 575.98px) {
+    .sidebar {
+        text-align: center;
+        float: none;
+    }
+    .divPro {
+        width: 100%;
+        display: grid;
+        overflow: scroll;
+        margin: 10px;
+    }
+    .divPro.input {
+        flex-direction: row
+    }
+    #coursesTable {
+        width: 100%;
+        margin: 0px;
+    }
+}

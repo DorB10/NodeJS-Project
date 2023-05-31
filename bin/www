@@ -1,0 +1,183 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+var app = require('../app');
+var debug = require('debug')('nodejs-project-4:server');
+var http = require('http');
+var fs = require('fs');
+var eventService = require('../services/eventService')
+const chatService = require("../services/chat-service")
+var https = require("https");
+
+
+/**
+ * Get port from environment and store in Express.
+ */
+
+var port = normalizePort(process.env.PORT || '3000');
+app.set('port', port);
+
+/**
+ * Create HTTP server.
+ */
+
+
+var httpServer = http.createServer(app);
+
+var httpsServer = https.createServer({
+    key: fs.readFileSync("selfsigned.key"),
+    cert: fs.readFileSync("selfsigned.crt"),
+    encoding: 'utf-8'
+}, app);
+
+/*
+ * Socket IO
+ */
+
+const { Server } = require("socket.io");
+const io = new Server(httpServer);
+const io_ssl = new Server(httpsServer);
+const usersConnected = [];
+
+
+
+// eventService.eventEmitter.on('userAdded', (data) => {
+//     //console.log(data);
+//     console.log('userAdded ', data)
+
+// });
+
+io.sockets.on('connection', (socket) => {
+    // console.log('a user connected ', socket.id);
+
+    // eventService.eventEmitter.on('sign', async(data) => {
+    socket.on('ucon', async(data) => {
+
+        if (usersConnected.find((user) => user.name === data.name)) {
+            return;
+        }
+        data.id = socket.id
+
+        usersConnected.push(data);
+        let messages = await chatService.fetchMessages();
+        io.emit('userAdded', usersConnected);
+
+        //console.log("------------------", usersConnected);
+    });
+
+
+    socket.on('disconnect', () => {
+        // console.log('socket id ', socket.id)
+        let id = usersConnected.findIndex((user) => user.id == socket.id);
+        usersConnected.splice(id, 1);
+    });
+
+    socket.on('userAdded', (user) => {
+        // console.log(user, ' userAddddddded')
+        //io.emit('userAdded', usersConnected);
+    });
+
+    socket.on('message', async(msg) => {
+        // console.log('recived message111:', msg);
+        const message = await chatService.addMessage(msg);
+        console.log(msg);
+        //socket.broadcast.emit('message', msg);
+        io.emit('message', msg);
+    });
+    socket.on('getUsers', () => {
+        io.emit('users', usersConnected)
+    })
+
+
+});
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+const mongoose = require('mongoose');
+const { use } = require('passport');
+//connect DB 
+mongoose.connect('mongodb://localhost:27017/chatManager', {
+        useUnifiedTopology: true,
+        useNewUrlParser: true,
+    })
+    .then(() => {
+        /**
+         * Listen on provided port, on all network interfaces.
+         */
+        console.log('Mongodb Started')
+        httpServer.listen(port);
+        httpServer.on('error', onError);
+        httpServer.on('listening', onListening);
+        httpsServer.listen(4000);
+        httpsServer.on('error', onError);
+        httpsServer.on('listening', onListening);
+
+    })
+    .catch(err => {
+        console.log("DB connection Error", err.message);
+    });
+
+
+/**
+ * Normalize a port into a number, string, or false.
+ */
+
+function normalizePort(val) {
+    var port = parseInt(val, 10);
+
+    if (isNaN(port)) {
+        // named pipe
+        return val;
+    }
+
+    if (port >= 0) {
+        // port number
+        return port;
+    }
+
+    return false;
+}
+
+/**
+ * Event listener for HTTP server "error" event.
+ */
+
+function onError(error) {
+    if (error.syscall !== 'listen') {
+        throw error;
+    }
+
+    var bind = typeof port === 'string' ?
+        'Pipe ' + port :
+        'Port ' + port;
+
+    // handle specific listen errors with friendly messages
+    switch (error.code) {
+        case 'EACCES':
+            console.error(bind + ' requires elevated privileges');
+            process.exit(1);
+            break;
+        case 'EADDRINUSE':
+            console.error(bind + ' is already in use');
+            process.exit(1);
+            break;
+        default:
+            throw error;
+    }
+}
+
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+
+function onListening() {
+    var addr = httpServer.address();
+    var bind = typeof addr === 'string' ?
+        'pipe ' + addr :
+        'port ' + addr.port;
+    debug('Listening on ' + bind);
+}
